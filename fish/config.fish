@@ -1,4 +1,4 @@
-# source /etc/profile with bash for linux
+# source /etc/profile with bash for linux if status is-login
 if status is-login
     if uname | grep -q Linux
         if not set -q __sourced_profile
@@ -24,14 +24,12 @@ if status is-interactive
     set -U fish_user_paths $PYENV_ROOT/bin $fish_user_paths
 end
 
+
 switch (uname)
     case Darwin
         fish_add_path /opt/homebrew/opt/rustup/bin
         eval "$(/opt/homebrew/bin/brew shellenv)"
-        echo "Hello Fish on Mac!"
     case Linux
-        echo "Hello Fish on Arch!"
-        
         # ASDF configuration code
         if test -z $ASDF_DATA_DIR
             set _asdf_shims "$HOME/.asdf/shims"
@@ -49,11 +47,7 @@ switch (uname)
         asdf completion fish > ~/.config/fish/completions/asdf.fish
 end
 
-contains "$HOME/.rokit/bin" $PATH
-if not status is-zero 
-    fish_add_path $HOME/.rokit/bin
-end
-
+fish_add_path $HOME/.rokit/bin
 fish_add_path $HOME/.pesde/bin
 
 pyenv init - fish | source
