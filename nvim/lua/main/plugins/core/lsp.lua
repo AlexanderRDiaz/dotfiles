@@ -32,13 +32,7 @@ spec.opts = {
                 "luau_lsp",
             },
         },
-        ensure_installed = {
-            "lua_ls",
-            "jsonls",
-            "pyright",
-            "jdtls",
-            "luau_lsp@1.48.0",
-        },
+        ensure_installed = {},
     },
 }
 
