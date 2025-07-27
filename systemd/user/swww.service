@@ -1,0 +1,14 @@
+[Unit]
+Description=Notification center for Wayland and not just for Sway
+Documentation=https://github.com/LGFae/swww
+After=graphical-session.target
+
+[Service]
+Type=exec
+ExecCondition=/lib/systemd/systemd-xdg-autostart-condition "wlroots:sway:Wayfire:labwc:Hyprland" ""
+ExecStart=swww-daemon
+Restart=on-failure
+Slice=app-graphical.slice
+
+[Install]
+WantedBy=graphical-session.target
