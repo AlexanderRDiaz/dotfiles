@@ -9,7 +9,7 @@ if status is-login
                 exec fish --login
             "
         end
-        
+
         set -e __sourced_profile
     end
 end
