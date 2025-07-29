@@ -1,1 +1,84 @@
 @import "mocha.css";
+
+* {
+    font-family: Fira Code Propo;
+    font-size: 16px;
+    min-height: 0;
+}
+
+#tray,
+#custom-music,
+#pulseaudio,
+#clock,
+#network,
+#custom-lock,
+#custom-power {
+    color: @text;
+    background-color: @surface0;
+    margin: 5px 0;
+    padding: 0.5rem 1rem;
+}
+
+#waybar {
+    color: @text;
+    background: transparent;
+    margin: 5px 5px;
+}
+
+#workspaces {
+    background-color: @surface0;
+    border-radius: 1rem;
+    margin: 5px;
+    margin-left: 1rem;
+}
+
+#workspaces button {
+  color: @text;
+  border-radius: 1rem;
+  padding: 0.4rem 1rem;
+}
+
+#workspaces button.active {
+  color: @rosewater;
+  border-radius: 1rem;
+}
+
+#workspaces button:hover {
+  color: @surface0;
+  border-radius: 1rem;
+}
+
+#custom-power {
+    border-radius: 1rem 0px 0px 1rem;
+    margin-left: 1rem;
+}
+
+#custom-lock {
+    border-radius: 0px 1rem 1rem 0px;
+}
+
+#custom-music {
+    border-radius: 1rem;
+    margin-left: 1rem;
+}
+
+#tray {
+    border-radius: 1rem;
+    margin-left: 1rem;
+}
+
+#pulseaudio {
+    border-radius: 1rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
+#network {
+    border-radius: 1rem;
+    margin-right: 1rem;
+}
+
+#clock {
+    border-radius: 1rem;
+    margin-right: 1rem;
+}
