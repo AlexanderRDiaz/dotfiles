@@ -70,7 +70,7 @@
     "custom/lock": {
         "tooltip": false,
         "format": "󰌾",
-        "on-click": "swaylock"
+        "on-click": "uwsm --app hyprlock"
     },
     "custom/power": {
         "tooltip": false,
