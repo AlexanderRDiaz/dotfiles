@@ -24,3 +24,46 @@
 @define-color base #1e1e2e;
 @define-color mantle #181825;
 @define-color crust #11111b;
+
+* {
+  font-family: JetBrainsMono;
+  font-size: 16px;
+  color: @text;
+}
+
+#window {
+  background: rgba(49, 50, 68, 0.7);
+  margin: auto;
+  padding: 10px;
+  border-radius: 20px;
+  border: 2px solid @surface2;
+}
+
+#input {
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 15px;
+  border: 2px solid @surface2;
+  background-color: @surface0;
+}
+
+#outer-box {
+  padding: 20px;
+}
+
+#img {
+  margin-right: 6px;
+}
+
+#entry {
+  padding: 10px;
+  border-radius: 15px;
+}
+
+#entry:selected {
+  background-color: @surface0;
+}
+
+#text {
+  margin: 2px;
+}

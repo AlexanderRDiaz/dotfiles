@@ -45,7 +45,6 @@
 }
 
 #workspaces button:hover {
-  color: @surface0;
   border-radius: 1rem;
 }
 
