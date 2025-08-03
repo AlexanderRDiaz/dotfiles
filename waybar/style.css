@@ -6,13 +6,14 @@
     min-height: 0;
 }
 
-#tray,
-#custom-music,
-#pulseaudio,
-#clock,
-#network,
+#custom-power,
 #custom-lock,
-#custom-power {
+#custom-music,
+#tray,
+#pulseaudio,
+#network,
+#custom-notification,
+#clock {
     color: @text;
     background-color: @surface0;
     margin: 5px 0;
@@ -74,6 +75,11 @@
 }
 
 #network {
+    border-radius: 1rem;
+    margin-right: 1rem;
+}
+
+#custom-notification {
     border-radius: 1rem;
     margin-right: 1rem;
 }

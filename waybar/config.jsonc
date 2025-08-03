@@ -15,6 +15,7 @@
         "tray",
         "pulseaudio",
         "network",
+        "custom/notification",
         "clock"
     ],
     "hyprland/workspaces": {
@@ -29,7 +30,7 @@
         "spacing": 10
     },
     "custom/music": {
-        "format": "   {}",
+        "format": " {}",
         "escape": true,
         "interval": 5,
         "tooltip": false,
@@ -40,7 +41,7 @@
     "network": {
         "format": "{ifname}",
         "format-wifi": "󰖩 {essid}",
-        "format-ethernet": "󰈀 {ipaddr}/{cidr}",
+        "format-ethernet": " {ipaddr}/{cidr}",
         "format-disconnected": "󱚵", //An empty format will hide the module.
         "tooltip-format": "󱘖 {ifname} via {gwaddr}",
         "tooltip-format-wifi": "󰖩 ({signalStrength}%)",
@@ -51,8 +52,7 @@
     "clock": {
         "timezone": "America/New_York",
         "format": "{:%a %b %d %I:%M %p}",
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "format-alt": " {:%d/%m/%Y}"
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
     },
     "pulseaudio": {
         // "scroll-step": 1, // %, can be a float
@@ -69,7 +69,7 @@
     },
     "custom/lock": {
         "tooltip": false,
-        "format": "󰌾",
+        "format": "",
         "on-click": "uwsm --app hyprlock"
     },
     "custom/power": {
@@ -83,5 +83,25 @@
             "suspend": "systemctl suspend",
             "hibernate": "systemctl hibernate"
         }
+    },
+    "custom/notification": {
+        "tooltip": false,
+        "format": "{icon}",
+        "format-icons": {
+            "notification": "󰂚<span><sup></sup></span>",
+            "none": "󰂚",
+            "inhibited-notification": "󰂚<span>sup></sup></span>",
+            "inhibited-none": "󰂚",
+            "dnd-notification": "󰂛<span><sup></sup></span>",
+            "dnd-none": "󰂛",
+            "dnd-inhibited-notification": "󰂛<span><sup></sup></span>",
+            "dnd-inhibited-none": "󰂛"
+        },
+        "return-type": "json",
+        "exec-if": "which swaync-client",
+        "exec": "swaync-client -swb",
+        "on-click": "swaync-client -t -sw",
+        "on-click-right": "swaync-client -d -sw",
+        "escape": true
     }
 }
