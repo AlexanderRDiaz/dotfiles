@@ -9,6 +9,8 @@ alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 PS1='[\u@\h \W]\$ '
 
+[[ -x $(command -v "fzf") ]] && eval "$(fzf --bash)"
+
 [[ -f $HOME/.rokit/env ]] && . "$HOME/.rokit/env"
 
 [[ -x $(command -v "asdf") ]] && . <(asdf completion bash)
