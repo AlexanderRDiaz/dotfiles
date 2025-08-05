@@ -50,6 +50,7 @@ end
 fish_add_path $HOME/.rokit/bin
 fish_add_path $HOME/.pesde/bin
 
+fish_config theme save "Catppuccin Mocha"
 fzf --fish | source
 set -Ux FZF_DEFAULT_OPTS "\
 --color=bg+:#313244,bg:#1E1E2E,spinner:#F5E0DC,hl:#F38BA8 \
