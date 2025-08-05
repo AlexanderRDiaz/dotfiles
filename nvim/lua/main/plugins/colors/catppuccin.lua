@@ -7,6 +7,7 @@ local spec = {
 }
 
 spec.opts = {
+    auto_integrations = true,
     flavour = "mocha",
     background = { light = "latte", dark = "mocha" },
     transparent_background = vim.g.transparent_enabled,
@@ -15,7 +16,6 @@ spec.opts = {
 
 spec.config = function(_, opts)
     require("catppuccin").setup(opts)
-    vim.cmd.colorscheme "catppuccin"
 end
 
 return spec

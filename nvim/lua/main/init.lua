@@ -36,11 +36,37 @@ require("lazy").setup {
         lazy = true,
     },
     install = {
-        colorscheme = { "habamax" },
+        colorscheme = { "catppuccin" },
     },
     checker = {
         enabled = true,
     },
+    ui = {
+        border = "rounded",
+    },
+    performance = {
+        cache = {
+            enabled = true,
+            disable_events = { "VimEnter", "BufReadPre" },
+        },
+        reset_packpath = true, -- reset the package path to improve startup time
+        rtp = {
+            reset = true,
+            paths = {},
+            disabled_plugins = {
+                "gzip",
+                "matchit",
+                "spellfile",
+                "shada",
+                "tarPlugin",
+                "tohtml",
+                "tutor",
+                "zipPlugin",
+            },
+        },
+    },
 }
+
+vim.cmd.colorscheme "catppuccin"
 
 require("remap")

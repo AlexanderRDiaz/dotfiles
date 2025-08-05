@@ -1,7 +1,7 @@
 local spec = {
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
-    event = "BufEnter",
+    event = { "BufReadPost", "BufWritePost", "BufNewFile", "VeryLazy" },
     main = "nvim-treesitter.configs",
 }
 
@@ -42,7 +42,6 @@ spec.opts = {
     },
     highlight = {
         enable = true,
-        additional_vim_regex_highlighting = { "markdown" },
     },
     endwise = { enable = true },
 }

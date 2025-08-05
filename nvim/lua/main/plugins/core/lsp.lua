@@ -1,8 +1,8 @@
-local spec = { "mason-org/mason-lspconfig.nvim" }
+local spec = { "neovim/nvim-lspconfig" }
 
 spec.cmd = { "LspInfo", "LspStart", "LspStop", "LspRestart" }
 
-spec.event = { "BufReadPre", "BufNewFile" }
+spec.event = { "BufReadPost", "BufWritePost", "BufNewFile", "VeryLazy" }
 
 spec.keys = {
     {
@@ -16,7 +16,7 @@ spec.keys = {
 }
 
 spec.dependencies = {
-    "neovim/nvim-lspconfig",
+    "mason-org/mason-lspconfig.nvim",
     "mason-org/mason.nvim",
     "zeioth/none-ls-autoload.nvim",
     "hrsh7th/cmp-nvim-lsp",

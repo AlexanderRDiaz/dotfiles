@@ -1,6 +1,6 @@
 local spec = {
     "nvim-lualine/lualine.nvim",
-    lazy = false,
+    event = "VeryLazy",
     priority = 999,
 }
 
@@ -61,7 +61,7 @@ spec.opts = function()
                 return "netrw"
             end
 
-            return string.lower(str)
+            return str
         end,
     }
 

@@ -1,9 +1,9 @@
-local supermaven = {
+local spec = {
     "supermaven-inc/supermaven-nvim",
     event = "VeryLazy",
 }
 
-supermaven.events = {
+spec.cmd = {
     "SupermavenStart",
     "SupermavenStop",
     "SupermavenRestart",
@@ -16,7 +16,7 @@ supermaven.events = {
     "SupermavenClearLog",
 }
 
-supermaven.opts = {
+spec.opts = {
     keymaps = {
         accept_suggestion = "<C-a>a",
         clear_suggestion = "<C-a>c",
@@ -24,4 +24,4 @@ supermaven.opts = {
     },
 }
 
-return supermaven
+return spec

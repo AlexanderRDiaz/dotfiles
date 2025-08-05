@@ -1,5 +1,7 @@
 local none_spec = { "nvimtools/none-ls.nvim", enabled = true }
 
+none_spec.event = "VeryLazy"
+
 none_spec.cmd = {
     "NullLsInfo",
     "NullLsLog",
@@ -7,12 +9,18 @@ none_spec.cmd = {
 
 none_spec.opts = function()
     return {
-        root_dir = require("null-ls.utils").root_pattern(".null-ls-root", ".neoconf.json", "Makefile", ".git"),
+        root_dir = require("null-ls.utils").root_pattern(
+            ".null-ls-root",
+            ".neoconf.json",
+            "Makefile",
+            ".git"
+        ),
     }
 end
 
 local autoload_spec = {
     "zeioth/none-ls-autoload.nvim",
+    event = { "BufReadPre", "BufNewFile" },
     enabled = true,
     dependencies = {
         "mason-org/mason.nvim",

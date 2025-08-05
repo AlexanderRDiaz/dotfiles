@@ -28,7 +28,7 @@ return {
             },
         },
         fflags = {
-            enableNewSolver = false,
+            enableNewSolver = true,
         },
     },
     opts = {

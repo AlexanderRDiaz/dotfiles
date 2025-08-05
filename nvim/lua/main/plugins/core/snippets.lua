@@ -8,28 +8,28 @@ spec.event = { "InsertEnter" }
 
 spec.keys = {
     {
-        "<C-s>e",
+        "<C-q>e",
         "<cmd>lua require('luasnip').expand()<cr>",
         silent = true,
         mode = "i",
         desc = "Expand snippet",
     },
     {
-        "<C-s>;",
+        "<C-q>;",
         "<cmd>lua require('luasnip').jump(1)<cr>",
         silent = true,
         mode = { "i", "s" },
         desc = "Jump to next node in snippet",
     },
     {
-        "<C-s>,",
+        "<C-q>,",
         "<cmd>lua require('luasnip').jump(-1)<cr>",
         silent = true,
         mode = { "i", "s" },
         desc = "Jump to previous node in snippet",
     },
     {
-        "<C-E>",
+        "<C-q>e",
         function()
             if require("luasnip").choice_active() then
                 require("luasnip").change_choice(1)

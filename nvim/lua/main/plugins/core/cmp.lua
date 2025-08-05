@@ -120,7 +120,7 @@ spec.opts = function()
                 max_item_count = 15,
                 priority = 3,
             },
-            { name = "path",    max_item_count = 5, priority = 2 },
+            { name = "path", max_item_count = 5, priority = 2 },
             { name = "luasnip", keyword_length = 3, max_item_count = 5, priority = 1 },
             { name = "lazydev", group_index = 0 },
         }, {

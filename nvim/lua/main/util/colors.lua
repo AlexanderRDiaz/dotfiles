@@ -17,7 +17,7 @@ function M.get_palette()
 
     local palette = require(
         require_palette_paths[theme]
-        or error(string.format("Palette path not created for %s", theme))
+            or error(string.format("Palette path not created for %s", theme))
     )
 
     if theme == "catppuccin" then

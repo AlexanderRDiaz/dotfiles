@@ -19,11 +19,11 @@ return {
             key = {
                 { "<leader>", "SPACE" },
                 { "<Leader>", "SPACE" },
-                { "<space>",  "SPACE" },
-                { "<Space>",  "SPACE" },
-                { "<cr>",     "RETURN" },
-                { "<CR>",     "RETURN" },
-                { "<Tab>",    "TAB" },
+                { "<space>", "SPACE" },
+                { "<Space>", "SPACE" },
+                { "<cr>", "RETURN" },
+                { "<CR>", "RETURN" },
+                { "<Tab>", "TAB" },
             },
         },
         win = {

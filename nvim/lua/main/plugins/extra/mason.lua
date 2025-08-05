@@ -1,6 +1,7 @@
 return {
     {
         "mason-org/mason.nvim",
+        event = "VeryLazy",
         cmd = {
             "Mason",
             "MasonUpdate",
@@ -14,12 +15,12 @@ return {
 
     {
         "WhoIsSethDaniel/mason-tool-installer.nvim",
-        lazy = false,
+        event = "VeryLazy",
         opts = {
             ensure_installed = {
                 -- LSPs
                 "lua_ls",
-                { "luau_lsp", --[[version = "v1.48.0"]] },
+                { "luau_lsp", version = "v1.48.0" },
                 "jdtls",
                 "pyright",
                 "taplo",

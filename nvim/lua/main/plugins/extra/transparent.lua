@@ -4,7 +4,7 @@ local spec = {
     lazy = false,
     priority = 1001,
 }
-spec.events = { "TransparentToggle", "TransparentEnable", "TransparentDisable" }
+spec.cmd = { "TransparentToggle", "TransparentEnable", "TransparentDisable" }
 
 spec.keys = {
     { "<leader>tt", "<cmd>TransparentToggle<CR>", { mode = "n", desc = "Toggle transparency" } },

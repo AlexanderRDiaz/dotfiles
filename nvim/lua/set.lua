@@ -1,34 +1,33 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
-vim.opt.guicursor = ""
+vim.o.guicursor = ""
 
-vim.opt.nu = true
-vim.opt.relativenumber = true
+vim.o.nu = true
+vim.o.relativenumber = true
 
-vim.opt.wildmenu = false
+vim.o.wildmenu = false
 
-vim.opt.tabstop = 4
-vim.opt.softtabstop = 0
-vim.opt.shiftwidth = 0
-vim.opt.expandtab = true
+vim.o.tabstop = 4
+vim.o.softtabstop = 0
+vim.o.shiftwidth = 0
+vim.o.expandtab = true
 
-vim.opt.smartindent = true
-vim.opt.wrap = true
+vim.o.smartindent = true
+vim.o.wrap = true
 
-vim.opt.swapfile = false
-vim.opt.backup = false
-vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
-vim.opt.undofile = true
+vim.o.swapfile = false
+vim.o.backup = false
+vim.o.undodir = os.getenv("HOME") .. "/.vim/undodir"
+vim.o.undofile = true
 
-vim.opt.hlsearch = false
-vim.opt.incsearch = true
+vim.o.hlsearch = false
+vim.o.incsearch = true
 
-vim.opt.termguicolors = true
+vim.o.termguicolors = true
 
-vim.opt.scrolloff = 10
-vim.opt.signcolumn = "yes"
-vim.opt.isfname:append("@-@")
+vim.o.scrolloff = 10
+vim.o.signcolumn = "yes"
 
-vim.opt.updatetime = 16
+vim.o.updatetime = 16
 vim.o.winborder = "rounded"
