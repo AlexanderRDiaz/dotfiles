@@ -25,13 +25,14 @@ return {
                 "pyright",
                 "taplo",
                 "jsonls",
-                "eslint-lsp",
+                "ts_ls",
                 -- Linters
                 "selene",
                 "ruff",
+                "eslint_lsp",
                 -- Formatters
                 "stylua",
-                "prettier",
+                "prettierd",
             },
             auto_update = true,
             run_on_start = true,

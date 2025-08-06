@@ -1,4 +1,3 @@
-set -Ux XDG_CONFIG_HOME $HOME/.config
 set -Ux EDITOR nvim
 
 if test -d $HOME/.pyenv
@@ -28,6 +27,13 @@ end
 
 if test -d $HOME/.pesde
     fish_add_path $HOME/.pesde/bin
+end
+
+if test -d "$HOME/.local/share/pnpm"
+    set -gx PNPM_HOME "$HOME/.local/share/pnpm"
+end
+if not string match -q -- $PNPM_HOME $PATH
+  set -gx PATH "$PNPM_HOME" $PATH
 end
 
 if not path filter -f -x $HOME/.rokit/env

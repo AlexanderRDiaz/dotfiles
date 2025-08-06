@@ -9,9 +9,5 @@ function nvim
             EXEC:"npiperelay.exe //./pipe/discord-ipc-0" 2>/dev/null &
     end
 
-    if test (count $argv) -eq 0
-        command nvim
-    else
-        command nvim "$argv"
-    end
+    command nvim $argv
 end

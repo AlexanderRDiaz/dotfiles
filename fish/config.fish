@@ -1,6 +1,7 @@
 set -U fish_greeting
 fish_vi_key_bindings
 
+set -Ux XDG_CONFIG_HOME $HOME/.config
 source $XDG_CONFIG_HOME/fish/functions/env.fish
 
 switch (uname)
@@ -17,3 +18,10 @@ end
 source $XDG_CONFIG_HOME/fish/functions/colors.fish
 
 source $XDG_CONFIG_HOME/fish/functions/source.fish
+
+# pnpm
+set -gx PNPM_HOME "/home/alex/.local/share/pnpm"
+if not string match -q -- $PNPM_HOME $PATH
+  set -gx PATH "$PNPM_HOME" $PATH
+end
+# pnpm end
