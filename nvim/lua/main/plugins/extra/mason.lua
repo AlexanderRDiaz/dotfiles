@@ -20,16 +20,18 @@ return {
             ensure_installed = {
                 -- LSPs
                 "lua_ls",
-                { "luau_lsp", version = "v1.48.0" },
+                "luau_lsp",
                 "jdtls",
                 "pyright",
                 "taplo",
                 "jsonls",
+                "eslint-lsp",
                 -- Linters
                 "selene",
                 "ruff",
                 -- Formatters
                 "stylua",
+                "prettier",
             },
             auto_update = true,
             run_on_start = true,
