@@ -1,3 +1,5 @@
+local workspace = require("main.util.workspace")
+
 local luau_platform = vim.fs.root(0, function(name)
     return name:match(".+%.project%.json$")
 end) and "roblox" or "standard"
@@ -41,6 +43,8 @@ return {
         sourcemap = {
             enabled = (luau_platform == "roblox"),
             autogenerate = true,
+            rojo_project_file = "out.project.json" and workspace.is_typescript()
+                or "default.project.json",
         },
         types = {
             definition_files = { "globalTypes.d.luau" },

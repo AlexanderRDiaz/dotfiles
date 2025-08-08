@@ -25,16 +25,36 @@ spec.dependencies = {
     "b0o/SchemaStore.nvim",
 }
 
-spec.opts = {
-    mason_lspconfig = {
-        automatic_enable = {
-            exclude = {
-                "luau_lsp",
+spec.opts = function()
+    local symbols = require("main.util.symbols")
+
+    return {
+        mason_lspconfig = {
+            automatic_enable = {
+                exclude = {
+                    "luau_lsp",
+                },
             },
         },
-        ensure_installed = {},
-    },
-}
+        diagnostics = {
+            underline = true,
+            update_in_insert = false,
+            severity_sort = true,
+            signs = {
+                text = {
+                    [vim.diagnostic.severity.ERROR] = symbols.diagnostics.error,
+                    [vim.diagnostic.severity.WARN] = symbols.diagnostics.warn,
+                    [vim.diagnostic.severity.HINT] = symbols.diagnostics.hint,
+                    [vim.diagnostic.severity.INFO] = symbols.diagnostics.info,
+                },
+            },
+        },
+        inlay_hints = {
+            enabled = false,
+            exclude = {},
+        },
+    }
+end
 
 spec.config = function(_, opts)
     local capabilities = vim.tbl_deep_extend(
@@ -50,8 +70,9 @@ spec.config = function(_, opts)
 
     vim.lsp.config("jsonls", require("main.plugins.lsp.jsonls"))
     vim.lsp.config("pyright", require("main.plugins.lsp.pyright"))
-    vim.lsp.config("luau_lsp", require("main.plugins.lsp.luau_lsp").server)
     vim.lsp.config("taplo", require("main.plugins.lsp.taplo"))
+
+    vim.diagnostic.config(vim.deepcopy(opts.diagnostics))
 
     vim.api.nvim_create_autocmd("LspAttach", {
         group = vim.api.nvim_create_augroup("LspAttach", {}),
@@ -65,6 +86,16 @@ spec.config = function(_, opts)
                         vim.lsp.buf.format({ bufnr = args.buf, id = client.id })
                     end,
                 })
+            end
+
+            if opts.inlay_hints.enabled then
+                if
+                    vim.api.nvim_buf_is_valid(args.buf)
+                    and vim.bo[args.buf].buftype == ""
+                    and not vim.tbl_contains(opts.inlay_hints.exclude, vim.bo[args.buf].filetype)
+                then
+                    vim.lsp.inlay_hint.enable(true, { bufnr = args.buf })
+                end
             end
 
             vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = args.buf, desc = "Hover" })
@@ -122,6 +153,7 @@ spec.config = function(_, opts)
     require("mason-lspconfig").setup(opts.mason_lspconfig)
     require("none-ls-autoload").setup {}
 
+    vim.lsp.config("luau_lsp", require("main.plugins.lsp.luau_lsp").server)
     require("luau-lsp").setup(require("main.plugins.lsp.luau_lsp").opts)
 end
 

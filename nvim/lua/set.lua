@@ -1,3 +1,4 @@
+local aug = vim.api.nvim_create_augroup("_config", {})
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
@@ -31,3 +32,9 @@ vim.o.signcolumn = "yes"
 
 vim.o.updatetime = 16
 vim.o.winborder = "rounded"
+
+vim.o.autoread = true
+vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter", "CursorHold", "CursorHoldI" }, {
+    command = "if mode() != 'c' | checktime | endif",
+    pattern = "*",
+})
