@@ -19,9 +19,4 @@ source $XDG_CONFIG_HOME/fish/functions/colors.fish
 
 source $XDG_CONFIG_HOME/fish/functions/source.fish
 
-# pnpm
 set -gx PNPM_HOME "/home/alex/.local/share/pnpm"
-if not string match -q -- $PNPM_HOME $PATH
-  set -gx PATH "$PNPM_HOME" $PATH
-end
-# pnpm end

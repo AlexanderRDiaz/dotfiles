@@ -10,4 +10,3 @@ if status is-login
     end
     set -e __sourced_profile
 end
-
