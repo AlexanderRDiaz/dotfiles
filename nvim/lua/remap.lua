@@ -37,8 +37,6 @@ end
 
 vim.keymap.set("i", "<C-l>", EscapePair)
 
-vim.keymap.set("n", "<leader>pv", vim.cmd.Ex, { desc = "Go to explorer" })
-
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move selection down" })
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move selection up" })
 
