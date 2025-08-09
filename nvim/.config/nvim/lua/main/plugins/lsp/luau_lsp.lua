@@ -4,7 +4,7 @@ local luau_platform = vim.fs.root(0, function(name)
     return name:match(".+%.project%.json$")
 end) and "roblox" or "standard"
 
-local rbxts = workspace.is_typescript()
+local rbxts = workspace.usesTS()
 
 local ignores = {
     "*.d.luau",
