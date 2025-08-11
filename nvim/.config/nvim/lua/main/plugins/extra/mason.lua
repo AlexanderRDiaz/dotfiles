@@ -29,7 +29,7 @@ return {
                 -- Linters
                 "selene",
                 "ruff",
-                "eslint_lsp",
+                "eslint-lsp",
                 -- Formatters
                 "stylua",
                 "prettierd",

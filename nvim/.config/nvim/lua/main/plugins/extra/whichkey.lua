@@ -14,7 +14,7 @@ return {
         },
     },
     opts = {
-        preset = "modern",
+        preset = "helix",
         replace = {
             key = {
                 { "<leader>", "SPACE" },
@@ -38,13 +38,13 @@ return {
     config = function(_, opts)
         local which_key = require("which-key")
         which_key.setup(opts)
-        which_key.add({
+        which_key.add {
             {
                 { "<leader>f", group = "telescope" },
                 { "<leader>p", group = "project" },
                 { "<leader>t", group = "toggle" },
                 { "<leader>x", group = "trouble" },
             },
-        })
+        }
     end,
 }

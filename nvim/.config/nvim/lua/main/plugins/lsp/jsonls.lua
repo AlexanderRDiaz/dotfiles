@@ -16,9 +16,9 @@ local extra = {
 return {
     settings = {
         json = {
-            schemas = require("schemastore").json.schemas({
+            schemas = require("schemastore").json.schemas {
                 extra = extra,
-            }),
+            },
             validate = { enable = true },
             format = { enable = true },
         },

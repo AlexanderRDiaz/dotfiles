@@ -8,7 +8,7 @@ spec.keys = {
     {
         "<leader>fm",
         function()
-            vim.lsp.buf.format({ async = true })
+            vim.lsp.buf.format { async = true }
         end,
         mode = "n",
         desc = "Format buffer",
@@ -83,7 +83,7 @@ spec.config = function(_, opts)
                 vim.api.nvim_create_autocmd("BufWritePre", {
                     buffer = args.buf,
                     callback = function(_)
-                        vim.lsp.buf.format({ bufnr = args.buf, id = client.id })
+                        vim.lsp.buf.format { bufnr = args.buf, id = client.id }
                     end,
                 })
             end

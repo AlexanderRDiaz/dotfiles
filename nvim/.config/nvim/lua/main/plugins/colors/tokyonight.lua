@@ -13,7 +13,7 @@ spec.opts = {
 
 spec.config = function(_, opts)
     require("tokyonight").setup(opts)
-    vim.cmd.colorscheme "tokyonight"
+    vim.cmd.colorscheme("tokyonight")
 end
 
 return spec

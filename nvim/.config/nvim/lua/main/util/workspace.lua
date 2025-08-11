@@ -1,7 +1,6 @@
 local fs = require("main.util.fs")
 
-local M = {
-}
+local M = {}
 
 local ts_files = {
     "tsconfig.json",
@@ -20,4 +19,4 @@ function M.usesTS()
     return false
 end
 
-return M 
+return M
