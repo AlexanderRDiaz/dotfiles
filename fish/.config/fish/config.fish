@@ -20,3 +20,4 @@ source $XDG_CONFIG_HOME/fish/functions/colors.fish
 source $XDG_CONFIG_HOME/fish/functions/source.fish
 
 set -gx PNPM_HOME "/home/alex/.local/share/pnpm"
+enable_transience

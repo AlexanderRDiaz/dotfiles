@@ -51,11 +51,11 @@ return {
         sourcemap = {
             enabled = (luau_platform == "roblox"),
             autogenerate = true,
-            rojo_project_file = "out.project.json" and rbxts or "default.project.json",
+            rojo_project_file = "default.project.json",
         },
         types = {
-            definition_files = { "globalTypes.d.luau" },
-            documentation_files = { "en-us.json" },
+            definition_files = rbxts and {} or { "globalTypes.d.luau" },
+            documentation_files = rbxts and {} or { "en-us.json" },
         },
     },
 }
