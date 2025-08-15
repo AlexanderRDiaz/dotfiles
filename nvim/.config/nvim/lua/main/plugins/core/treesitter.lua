@@ -51,6 +51,7 @@ spec.opts = {
         enable = true,
     },
     endwise = { enable = true },
+    indent = { enable = true },
 }
 
 return spec
