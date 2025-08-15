@@ -11,7 +11,7 @@ switch (uname)
         source $XDG_CONFIG_HOME/fish/functions/linux.fish
 end
 
-if cat /proc/version | grep -q WSL
+if test -d /proc/version && cat /proc/version | grep -q WSL
     source $XDG_CONFIG_HOME/fish/functions/wsl.fish
 end
 
@@ -19,5 +19,4 @@ source $XDG_CONFIG_HOME/fish/functions/colors.fish
 
 source $XDG_CONFIG_HOME/fish/functions/source.fish
 
-set -gx PNPM_HOME "/home/alex/.local/share/pnpm"
 enable_transience
