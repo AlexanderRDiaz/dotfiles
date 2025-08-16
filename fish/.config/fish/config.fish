@@ -11,7 +11,7 @@ switch (uname)
         source $XDG_CONFIG_HOME/fish/functions/linux.fish
 end
 
-if test -d /proc/version && cat /proc/version | grep -q WSL
+if test -e /proc/version && cat /proc/version | grep -q WSL
     source $XDG_CONFIG_HOME/fish/functions/wsl.fish
 end
 
