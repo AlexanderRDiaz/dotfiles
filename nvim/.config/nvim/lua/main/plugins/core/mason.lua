@@ -32,7 +32,6 @@ return {
                 "eslint-lsp",
                 -- Formatters
                 "stylua",
-                "prettierd",
             },
             auto_update = true,
             run_on_start = true,

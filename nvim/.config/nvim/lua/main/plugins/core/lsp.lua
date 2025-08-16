@@ -1,3 +1,13 @@
+local function table_contains(table, element)
+    for _, value in ipairs(table) do
+        if value == element then
+            return true
+        end
+    end
+
+    return false
+end
+
 local spec = { "neovim/nvim-lspconfig" }
 
 spec.cmd = { "LspInfo", "LspStart", "LspStop", "LspRestart" }
@@ -53,6 +63,13 @@ spec.opts = function()
             enabled = false,
             exclude = {},
         },
+        format = {
+            enabled = true,
+            format_on_save = true,
+            ignore_clients = {
+                "ts_ls",
+            },
+        },
     }
 end
 
@@ -79,7 +96,10 @@ spec.config = function(_, opts)
         callback = function(args)
             local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
 
-            if client.supports_method(client, "textDocument/formatting") then
+            if table_contains(opts.format.ignore_clients, client.name) then
+                client.server_capabilities.documentFormattingProvider = false
+                client.server_capabilities.documentRangeFormattingProvider = false
+            elseif client.supports_method(client, "textDocument/formatting") then
                 vim.api.nvim_create_autocmd("BufWritePre", {
                     buffer = args.buf,
                     callback = function(_)
