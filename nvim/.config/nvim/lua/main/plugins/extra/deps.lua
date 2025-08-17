@@ -23,4 +23,7 @@ return {
     {
         "hrsh7th/cmp-nvim-lsp",
     },
+    {
+        "lukas-reineke/lsp-format.nvim",
+    },
 }

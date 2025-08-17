@@ -33,6 +33,7 @@ spec.dependencies = {
     "folke/lazydev.nvim",
     "lopi-py/luau-lsp.nvim",
     "b0o/SchemaStore.nvim",
+    "lukas-reineke/lsp-format.nvim",
 }
 
 spec.opts = function()
@@ -65,8 +66,7 @@ spec.opts = function()
         },
         format = {
             enabled = true,
-            format_on_save = true,
-            ignore_clients = {
+            exclude = {
                 "ts_ls",
             },
         },
@@ -96,16 +96,8 @@ spec.config = function(_, opts)
         callback = function(args)
             local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
 
-            if table_contains(opts.format.ignore_clients, client.name) then
-                client.server_capabilities.documentFormattingProvider = false
-                client.server_capabilities.documentRangeFormattingProvider = false
-            elseif client.supports_method(client, "textDocument/formatting") then
-                vim.api.nvim_create_autocmd("BufWritePre", {
-                    buffer = args.buf,
-                    callback = function(_)
-                        vim.lsp.buf.format { bufnr = args.buf, id = client.id }
-                    end,
-                })
+            if opts.format.enabled and not table_contains(opts.format.exclude, client.name) then
+                require("lsp-format").on_attach(client, args.buf)
             end
 
             if opts.inlay_hints.enabled then
