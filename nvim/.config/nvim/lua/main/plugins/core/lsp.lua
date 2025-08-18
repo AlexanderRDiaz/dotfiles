@@ -1,13 +1,3 @@
-local function table_contains(table, element)
-    for _, value in ipairs(table) do
-        if value == element then
-            return true
-        end
-    end
-
-    return false
-end
-
 local spec = { "neovim/nvim-lspconfig" }
 
 spec.cmd = { "LspInfo", "LspStart", "LspStop", "LspRestart" }
@@ -18,7 +8,7 @@ spec.keys = {
     {
         "<leader>fm",
         function()
-            vim.lsp.buf.format { async = true }
+            require("lsp-format").format { buf = vim.api.nvim_get_current_buf() }
         end,
         mode = "n",
         desc = "Format buffer",
@@ -65,38 +55,21 @@ spec.opts = function()
             exclude = {},
         },
         format = {
-            enabled = true,
             exclude = {
-                "ts_ls",
+                ts_ls = true,
             },
         },
     }
 end
 
 spec.config = function(_, opts)
-    local capabilities = vim.tbl_deep_extend(
-        "force",
-        vim.lsp.protocol.make_client_capabilities(),
-        require("cmp_nvim_lsp").default_capabilities()
-    )
-    capabilities.workspace.didChangeWatchedFiles.dynamicRegistration = true
-    vim.lsp.config("*", {
-        capabilities = capabilities,
-        root_markers = { ".git" },
-    })
-
-    vim.lsp.config("jsonls", require("main.plugins.lsp.jsonls"))
-    vim.lsp.config("pyright", require("main.plugins.lsp.pyright"))
-    vim.lsp.config("taplo", require("main.plugins.lsp.taplo"))
-
-    vim.diagnostic.config(vim.deepcopy(opts.diagnostics))
+    require("lsp-format").setup {}
 
     vim.api.nvim_create_autocmd("LspAttach", {
-        group = vim.api.nvim_create_augroup("LspAttach", {}),
         callback = function(args)
             local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
 
-            if opts.format.enabled and not table_contains(opts.format.exclude, client.name) then
+            if not opts.format.exclude[client.name] then
                 require("lsp-format").on_attach(client, args.buf)
             end
 
@@ -161,6 +134,24 @@ spec.config = function(_, opts)
             )
         end,
     })
+
+    local capabilities = vim.tbl_deep_extend(
+        "force",
+        vim.lsp.protocol.make_client_capabilities(),
+        require("cmp_nvim_lsp").default_capabilities()
+    )
+    capabilities.workspace.didChangeWatchedFiles.dynamicRegistration = true
+
+    vim.lsp.config("*", {
+        capabilities = capabilities,
+        root_markers = { ".git" },
+    })
+
+    vim.lsp.config("jsonls", require("main.plugins.lsp.jsonls"))
+    vim.lsp.config("pyright", require("main.plugins.lsp.pyright"))
+    vim.lsp.config("taplo", require("main.plugins.lsp.taplo"))
+
+    vim.diagnostic.config(vim.deepcopy(opts.diagnostics))
 
     require("mason-lspconfig").setup(opts.mason_lspconfig)
     require("none-ls-autoload").setup {}
