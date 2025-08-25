@@ -27,6 +27,11 @@ spec.keys = {
 }
 
 spec.opts = {
+    fzf_colors = {
+        true,
+        bg = "-1",
+        gutter = "-1",
+    },
     winopts = {
         width = 0.8,
         height = 0.8,
