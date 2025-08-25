@@ -29,8 +29,8 @@ require("set")
 require("lazy").setup {
     spec = {
         { import = "main.plugins.colors" },
-        { import = "main.plugins.extra" },
         { import = "main.plugins.core" },
+        { import = "main.plugins.extra" },
     },
     defaults = {
         lazy = true,
