@@ -5,7 +5,6 @@ local spec = {
 
 spec.dependencies = {
     "L3MON4D3/LuaSnip",
-    "supermaven-inc/supermaven-nvim",
 }
 
 spec.opts = {
