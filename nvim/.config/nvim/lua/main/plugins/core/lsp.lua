@@ -56,6 +56,7 @@ spec.opts = function()
         format = {
             exclude = {
                 ts_ls = true,
+                lua_ls = true,
             },
         },
     }
