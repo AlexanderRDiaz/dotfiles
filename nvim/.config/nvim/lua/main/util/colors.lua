@@ -2,7 +2,6 @@ local M = {}
 
 local require_palette_paths = {
     catppuccin = "catppuccin.palettes",
-    tokyonight = "tokyonight.colors",
 }
 
 function M.get_palette()

@@ -6,7 +6,6 @@ local spec = {
 
 spec.dependencies = {
     "nvim-tree/nvim-web-devicons",
-    "otavioschwanck/arrow.nvim",
 }
 
 spec.opts = function()
@@ -46,6 +45,7 @@ spec.opts = function()
         icon_only = true,
         seperator = "",
         padding = { left = 1, right = 0 },
+        draw_empty = true,
     }
 
     local filename = {
@@ -90,36 +90,13 @@ spec.opts = function()
         update_in_insert = true,
     }
 
-    local searchcount = {
-        "searchcount",
-    }
-
-    local selectioncount = {
-        "selectioncount",
-        fmt = function(str)
-            return "󰸱 " .. str
-        end,
-        cond = function()
-            return vim.fn.mode() == "v"
-        end,
-    }
-
     local seperator = {
         "%=",
         padding = { left = 0, right = 0 },
     }
 
-    local arrow = {
-        "require('arrow.statusline').text_for_statusline_with_icons()",
-    }
-
-    local cwd = {
-        function()
-            return vim.fn.getcwd()
-        end,
-        fmt = function(str)
-            return string.gsub(str, "^/Users/%a+", "~")
-        end,
+    local filesize = {
+        "filesize",
     }
 
     local encoding = {
@@ -144,7 +121,7 @@ spec.opts = function()
         separator = { left = "", right = "" },
     }
 
-    local result = {
+    return {
         options = {
             theme = theme,
             component_separators = { left = "", right = "" },
@@ -154,14 +131,12 @@ spec.opts = function()
         sections = {
             lualine_a = { mode },
             lualine_b = { filetype, filename },
-            lualine_c = { branch, diff },
-            lualine_x = { diagnostics, searchcount, selectioncount, seperator },
-            lualine_y = { arrow, cwd, encoding, fileformat },
+            lualine_c = { branch },
+            lualine_x = { diff, diagnostics, seperator },
+            lualine_y = { filesize, encoding, fileformat },
             lualine_z = { location },
         },
     }
-
-    return result
 end
 
 return spec
