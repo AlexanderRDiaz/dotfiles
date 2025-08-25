@@ -16,6 +16,7 @@ return {
     {
         "WhoIsSethDaniel/mason-tool-installer.nvim",
         event = "VeryLazy",
+        build = ":MasonToolsInstall",
         opts = {
             ensure_installed = {
                 -- LSPs

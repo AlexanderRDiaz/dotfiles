@@ -19,7 +19,6 @@ spec.dependencies = {
     "mason-org/mason-lspconfig.nvim",
     "mason-org/mason.nvim",
     "zeioth/none-ls-autoload.nvim",
-    "hrsh7th/cmp-nvim-lsp",
     "folke/lazydev.nvim",
     "lopi-py/luau-lsp.nvim",
     "b0o/SchemaStore.nvim",
@@ -138,7 +137,7 @@ spec.config = function(_, opts)
     local capabilities = vim.tbl_deep_extend(
         "force",
         vim.lsp.protocol.make_client_capabilities(),
-        require("cmp_nvim_lsp").default_capabilities()
+        require("blink.cmp").get_lsp_capabilities()
     )
     capabilities.workspace.didChangeWatchedFiles.dynamicRegistration = true
 

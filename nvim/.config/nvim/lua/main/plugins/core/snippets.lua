@@ -6,41 +6,6 @@ spec.build = "make install_jsregexp"
 
 spec.event = { "InsertEnter" }
 
-spec.keys = {
-    {
-        "<C-q>e",
-        "<cmd>lua require('luasnip').expand()<cr>",
-        silent = true,
-        mode = "i",
-        desc = "Expand snippet",
-    },
-    {
-        "<C-q>;",
-        "<cmd>lua require('luasnip').jump(1)<cr>",
-        silent = true,
-        mode = { "i", "s" },
-        desc = "Jump to next node in snippet",
-    },
-    {
-        "<C-q>,",
-        "<cmd>lua require('luasnip').jump(-1)<cr>",
-        silent = true,
-        mode = { "i", "s" },
-        desc = "Jump to previous node in snippet",
-    },
-    {
-        "<C-q>e",
-        function()
-            if require("luasnip").choice_active() then
-                require("luasnip").change_choice(1)
-            end
-        end,
-        silent = true,
-        mode = { "i", "s" },
-        desc = "Change snippet choice",
-    },
-}
-
 spec.dependencies = { "rafamadriz/friendly-snippets" }
 
 spec.opts = function()
