@@ -16,11 +16,10 @@ spec.keys = {
 }
 
 spec.dependencies = {
+    "saghen/blink.cmp",
     "mason-org/mason-lspconfig.nvim",
     "mason-org/mason.nvim",
     "zeioth/none-ls-autoload.nvim",
-    "folke/lazydev.nvim",
-    "lopi-py/luau-lsp.nvim",
     "b0o/SchemaStore.nvim",
     "lukas-reineke/lsp-format.nvim",
 }
@@ -157,7 +156,6 @@ spec.config = function(_, opts)
     require("none-ls-autoload").setup {}
 
     vim.lsp.config("luau_lsp", require("main.plugins.lsp.luau_lsp").server)
-    require("luau-lsp").setup(require("main.plugins.lsp.luau_lsp").opts)
 end
 
 return spec

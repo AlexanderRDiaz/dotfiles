@@ -1,6 +1,6 @@
 local spec = { "windwp/nvim-ts-autotag" }
 
-spec.event = "VeryLazy"
+spec.ft = { "html", "xml", "javascriptreact", "typescriptreact" }
 
 spec.opts = {
     opts = {
