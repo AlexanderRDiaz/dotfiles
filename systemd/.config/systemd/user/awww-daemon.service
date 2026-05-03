@@ -1,18 +1,16 @@
 [Unit]
-Description=Highly customizable Wayland bar for Sway and Wlroots based compositors.
-Documentation=man:waybar(5)
+Description=An Answer to your Wayland Wallpaper Woes
+Documentation=man:awww-daemon(1)
 After=graphical-session.target
 After=wayland-session@hyprland.desktop.target
 
 [Service]
 Type=exec
 ExecCondition=/lib/systemd/systemd-xdg-autostart-condition "Hyprland" ""
-ExecStart=/usr/bin/waybar
-ExecReload=kill -SIGUSR2 $MAINPID
+ExecStart=awww-daemon
 Restart=on-failure
-Slice=app-graphical.slice
+Slice=background-graphical.slice
 
 [Install]
 WantedBy=graphical-session.target
 WantedBy=wayland-session@hyprland.desktop.target
-
