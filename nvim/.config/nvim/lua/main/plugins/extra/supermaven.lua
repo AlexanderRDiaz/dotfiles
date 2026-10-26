@@ -1,5 +1,6 @@
 local spec = {
     "supermaven-inc/supermaven-nvim",
+    enabled = false,
     event = "VeryLazy",
 }
 

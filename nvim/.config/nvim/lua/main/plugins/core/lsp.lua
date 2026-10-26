@@ -19,9 +19,8 @@ spec.dependencies = {
     "saghen/blink.cmp",
     "mason-org/mason-lspconfig.nvim",
     "mason-org/mason.nvim",
-    "zeioth/none-ls-autoload.nvim",
-    "b0o/SchemaStore.nvim",
     "lukas-reineke/lsp-format.nvim",
+    "b0o/SchemaStore.nvim",
 }
 
 spec.opts = function()
@@ -32,6 +31,7 @@ spec.opts = function()
             automatic_enable = {
                 exclude = {
                     "luau_lsp",
+                    "jdtls",
                 },
             },
         },
@@ -56,10 +56,12 @@ spec.opts = function()
             exclude = {
                 ts_ls = true,
                 lua_ls = true,
+                jdtls = true,
             },
         },
     }
 end
+
 
 spec.config = function(_, opts)
     require("lsp-format").setup {}
@@ -67,10 +69,10 @@ spec.config = function(_, opts)
     vim.api.nvim_create_autocmd("LspAttach", {
         callback = function(args)
             local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
-
             if not opts.format.exclude[client.name] then
                 require("lsp-format").on_attach(client, args.buf)
             end
+
 
             if opts.inlay_hints.enabled then
                 if
@@ -147,7 +149,7 @@ spec.config = function(_, opts)
     })
 
     vim.lsp.config("jsonls", require("main.plugins.lsp.jsonls"))
-    vim.lsp.config("pyright", require("main.plugins.lsp.pyright"))
+    vim.lsp.config("taplo", require("main.plugins.lsp.taplo"))
     vim.lsp.config("taplo", require("main.plugins.lsp.taplo"))
 
     vim.diagnostic.config(vim.deepcopy(opts.diagnostics))
