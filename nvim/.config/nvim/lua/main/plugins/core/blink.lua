@@ -1,22 +1,20 @@
 local spec = {
     "saghen/blink.cmp",
     version = "1.*",
-}
-
-spec.dependencies = {
-    "L3MON4D3/LuaSnip",
-}
-
-spec.opts = {
-    keymap = { preset = "default" },
-    appearance = { nerd_font_variant = "mono" },
-    completion = { documentation = { auto_show = true } },
-    sources = { default = { "lsp", "path", "snippets", "buffer" } },
-    fuzzy = { implementation = "prefer_rust_with_warning" },
-    snippets = { preset = "luasnip" },
-    cmdline = {
-        keymap = { preset = "inherit" },
-        completion = { menu = { auto_show = true } },
+    dependencies = {
+        "L3MON4D3/LuaSnip",
+    },
+    opts = {
+        keymap = { preset = "default" },
+        appearance = { nerd_font_variant = "mono" },
+        completion = { documentation = { auto_show = true } },
+        sources = { default = { "lsp", "path", "snippets", "buffer" } },
+        fuzzy = { implementation = "prefer_rust_with_warning" },
+        snippets = { preset = "luasnip" },
+        cmdline = {
+            keymap = { preset = "inherit" },
+            completion = { menu = { auto_show = true } },
+        },
     },
 }
 

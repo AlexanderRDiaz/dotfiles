@@ -1,8 +1,9 @@
 local spec = {
     "nvim-treesitter/nvim-treesitter",
+    lazy = false,
+    branch = "main",
     build = ":TSUpdate",
     event = { "BufReadPost", "BufWritePost", "BufNewFile", "VeryLazy" },
-    main = "nvim-treesitter.configs",
 }
 
 spec.cmd = {
@@ -28,15 +29,12 @@ spec.dependencies = {
 }
 
 spec.opts = {
-    auto_install = true,
-    sync_install = true,
-    ensure_installed = {
+    languages = {
         "lua",
         "luau",
         "javascript",
         "typescript",
         "json",
-        "jsonc",
         "toml",
         "vim",
         "vimdoc",
@@ -53,5 +51,12 @@ spec.opts = {
     endwise = { enable = true },
     indent = { enable = true },
 }
+
+spec.config = function(_, opts)
+    local ts = require("nvim-treesitter")
+    ts.setup()
+    ts.install(opts.languages)
+    ts.update(opts.languages)
+end
 
 return spec
