@@ -9,6 +9,7 @@ if test -d $PYENV_ROOT/bin
 end
 
 if test -d $HOME/.asdf
+    # ASDF configuration code
     if test -z $ASDF_DATA_DIR
         set _asdf_shims "$HOME/.asdf/shims"
     else
