@@ -1,62 +1,56 @@
-local spec = {
+return {
     "nvim-treesitter/nvim-treesitter",
     lazy = false,
     branch = "main",
     build = ":TSUpdate",
     event = { "BufReadPost", "BufWritePost", "BufNewFile", "VeryLazy" },
-}
-
-spec.cmd = {
-    "TSInstall",
-    "TSInstallSync",
-    "TSInstallInfo",
-    "TSUpdate",
-    "TSUpdateSync",
-    "TSUninstall",
-    "TSBufEnable",
-    "TSBufDisable",
-    "TSBufToggle",
-    "TSEnable",
-    "TSDisable",
-    "TSToggle",
-    "TSModuleInfo",
-    "TSEditQuery",
-    "TSEditQueryUserAfter",
-}
-
-spec.dependencies = {
-    "RRethy/nvim-treesitter-endwise",
-}
-
-spec.opts = {
-    languages = {
-        "lua",
-        "luau",
-        "javascript",
-        "typescript",
-        "json",
-        "toml",
-        "vim",
-        "vimdoc",
-        "python",
-        "yaml",
-        "java",
-        "gitignore",
-        "gitattributes",
-        "fish",
+    cmd = {
+        "TSInstall",
+        "TSInstallSync",
+        "TSInstallInfo",
+        "TSUpdate",
+        "TSUpdateSync",
+        "TSUninstall",
+        "TSBufEnable",
+        "TSBufDisable",
+        "TSBufToggle",
+        "TSEnable",
+        "TSDisable",
+        "TSToggle",
+        "TSModuleInfo",
+        "TSEditQuery",
+        "TSEditQueryUserAfter",
     },
-    highlight = {
-        enable = true,
+    dependencies = {
+        "RRethy/nvim-treesitter-endwise",
     },
-    endwise = { enable = true },
-    indent = { enable = true },
+    opts = {
+        languages = {
+            "lua",
+            "luau",
+            "javascript",
+            "typescript",
+            "json",
+            "toml",
+            "vim",
+            "vimdoc",
+            "python",
+            "yaml",
+            "java",
+            "gitignore",
+            "gitattributes",
+            "fish",
+        },
+        highlight = {
+            enable = true,
+        },
+        endwise = { enable = true },
+        indent = { enable = true },
+    },
+    config = function(_, opts)
+        local ts = require("nvim-treesitter")
+        ts.setup()
+        ts.install(opts.languages)
+        ts.update(opts.languages)
+    end,
 }
-
-spec.config = function(_, opts)
-    local ts = require("nvim-treesitter")
-    ts.setup()
-    ts.install(opts.languages)
-    ts.update(opts.languages)
-end
-
-return spec

@@ -1,15 +1,12 @@
-local spec = {
+return {
     "j-hui/fidget.nvim",
     event = "VeryLazy",
-}
-
-spec.opts = {
-    notification = {
-        window = {
-            winblend = 0,
-            relative = "editor",
+    opts = {
+        notification = {
+            window = {
+                winblend = 0,
+                relative = "editor",
+            },
         },
     },
 }
-
-return { spec }

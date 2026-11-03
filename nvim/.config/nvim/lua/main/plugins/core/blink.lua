@@ -1,4 +1,4 @@
-local spec = {
+return {
     "saghen/blink.cmp",
     version = "1.*",
     dependencies = {
@@ -16,8 +16,5 @@ local spec = {
             completion = { menu = { auto_show = true } },
         },
     },
+    opts_extend = { "sources.default" },
 }
-
-spec.opts_extend = { "sources.default" }
-
-return spec

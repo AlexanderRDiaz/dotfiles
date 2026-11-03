@@ -2,7 +2,7 @@ local M = {}
 
 function M.fqn(fname)
     fname = vim.fn.fnamemodify(fname, ":p")
-    return uv.fs_realpath(fname) or fname
+    return vim.uv.fs_realpath(fname) or fname
 end
 
 function M.exists(fname)

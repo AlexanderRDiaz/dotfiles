@@ -1,142 +1,138 @@
-local spec = {
+return {
     "nvim-lualine/lualine.nvim",
     event = "VeryLazy",
     priority = 999,
-}
+    dependencies = {
+        "nvim-tree/nvim-web-devicons",
+    },
+    opts = function()
+        local symbols = require("main.util.symbols")
+        local colors = require("main.util.colors").get_palette()
 
-spec.dependencies = {
-    "nvim-tree/nvim-web-devicons",
-}
-
-spec.opts = function()
-    local symbols = require("main.util.symbols")
-    local colors = require("main.util.colors").get_palette()
-
-    local state_colors = {
-        normal = colors.blue,
-        insert = colors.green,
-        visual = colors.purple,
-        replace = colors.red,
-        command = colors.yellow,
-        inactive = colors.fg,
-    }
-
-    local theme = {}
-    local base = { fg = "None", gui = "bold" }
-    for state, color in pairs(state_colors) do
-        theme[state] = {
-            a = { fg = colors.black or colors.base, bg = color, gui = "bold" },
-            b = base,
-            c = base,
-            x = base,
-            y = base,
-            z = { fg = colors.black or colors.base, bg = color, gui = "bold" },
+        local state_colors = {
+            normal = colors.blue,
+            insert = colors.green,
+            visual = colors.purple,
+            replace = colors.red,
+            command = colors.yellow,
+            inactive = colors.fg,
         }
-    end
 
-    local mode = {
-        "mode",
-        separator = { left = "", right = "" },
-    }
+        local theme = {}
+        local base = { fg = "None", gui = "bold" }
+        for state, color in pairs(state_colors) do
+            theme[state] = {
+                a = { fg = colors.black or colors.base, bg = color, gui = "bold" },
+                b = base,
+                c = base,
+                x = base,
+                y = base,
+                z = { fg = colors.black or colors.base, bg = color, gui = "bold" },
+            }
+        end
 
-    local filetype = {
-        "filetype",
-        colored = true,
-        icon_only = true,
-        seperator = "",
-        padding = { left = 1, right = 0 },
-        draw_empty = true,
-    }
+        local mode = {
+            "mode",
+            separator = { left = "", right = "" },
+        }
 
-    local filename = {
-        "filename",
-        file_status = false,
-        symbols = {
-            unnamed = "[unnamed]",
-            newfile = "[new]",
-        },
-        padding = { left = 0, right = 1 },
-        fmt = function(str)
-            if vim.bo.filetype == "netrw" then
-                return "netrw"
-            end
+        local filetype = {
+            "filetype",
+            colored = true,
+            icon_only = true,
+            seperator = "",
+            padding = { left = 1, right = 0 },
+            draw_empty = true,
+        }
 
-            return str
-        end,
-    }
+        local filename = {
+            "filename",
+            file_status = false,
+            symbols = {
+                unnamed = "[unnamed]",
+                newfile = "[new]",
+            },
+            padding = { left = 0, right = 1 },
+            fmt = function(str)
+                if vim.bo.filetype == "netrw" then
+                    return "netrw"
+                end
 
-    local branch = {
-        "branch",
-    }
+                return str
+            end,
+        }
 
-    local diff = {
-        "diff",
-        diff_color = {
-            added = { fg = colors.green, bg = "None" },
-            modified = { fg = colors.orange, bg = "None" },
-            removed = { fg = colors.red, bg = "None" },
-        },
-    }
+        local branch = {
+            "branch",
+        }
 
-    local diagnostics = {
-        "diagnostics",
-        sources = { "nvim_lsp", "nvim_diagnostic" },
-        symbols = {
-            error = symbols.diagnostics.error .. " ",
-            warn = symbols.diagnostics.warn .. " ",
-            info = symbols.diagnostics.info .. " ",
-            hint = symbols.diagnostics.hint .. " ",
-        },
-        update_in_insert = true,
-    }
+        local diff = {
+            "diff",
+            diff_color = {
+                added = { fg = colors.green, bg = "None" },
+                modified = { fg = colors.orange, bg = "None" },
+                removed = { fg = colors.red, bg = "None" },
+            },
+        }
 
-    local seperator = {
-        "%=",
-        padding = { left = 0, right = 0 },
-    }
+        local diagnostics = {
+            "diagnostics",
+            sources = { "nvim_lsp", "nvim_diagnostic" },
+            symbols = {
+                error = symbols.diagnostics.error .. " ",
+                warn = symbols.diagnostics.warn .. " ",
+                info = symbols.diagnostics.info .. " ",
+                hint = symbols.diagnostics.hint .. " ",
+            },
+            update_in_insert = true,
+        }
 
-    local filesize = {
-        "filesize",
-    }
+        local seperator = {
+            "%=",
+            padding = { left = 0, right = 0 },
+        }
 
-    local encoding = {
-        "encoding",
-        show_bomb = true,
-    }
+        local filesize = {
+            "filesize",
+        }
 
-    local fileformat = {
-        "fileformat",
-        symbols = {
-            unix = "lf",
-            dos = "cr-lf",
-            mac = "cr",
-        },
-    }
+        local encoding = {
+            "encoding",
+            show_bomb = true,
+        }
 
-    local location = {
-        function()
-            local r, c = unpack(vim.api.nvim_win_get_cursor(0))
-            return string.format("%s:%s | %2d%%%%", r, c, r / vim.fn.line("$") * 100)
-        end,
-        separator = { left = "", right = "" },
-    }
+        local fileformat = {
+            "fileformat",
+            symbols = {
+                unix = "lf",
+                dos = "cr-lf",
+                mac = "cr",
+            },
+        }
 
-    return {
-        options = {
-            theme = theme,
-            component_separators = { left = "", right = "" },
-            section_separators = { left = "", right = "" },
-            fmt = string.lower,
-        },
-        sections = {
-            lualine_a = { mode },
-            lualine_b = { filetype, filename },
-            lualine_c = { branch },
-            lualine_x = { diff, diagnostics, seperator },
-            lualine_y = { filesize, encoding, fileformat },
-            lualine_z = { location },
-        },
-    }
-end
+        local location = {
+            function()
+                local r, c = unpack(vim.api.nvim_win_get_cursor(0))
+                return string.format("%s:%s | %2d%%%%", r, c, r / vim.fn.line("$") * 100)
+            end,
+            separator = { left = "", right = "" },
+        }
 
-return spec
+        return {
+            options = {
+                theme = theme,
+                component_separators = { left = "", right = "" },
+                section_separators = { left = "", right = "" },
+                fmt = string.lower,
+            },
+            sections = {
+                lualine_a = { mode },
+                lualine_b = { filetype, filename },
+                lualine_c = { branch },
+                lualine_x = { diff, diagnostics, seperator },
+                lualine_y = { filesize, encoding, fileformat },
+                lualine_z = { location },
+            },
+        }
+    end,
+}

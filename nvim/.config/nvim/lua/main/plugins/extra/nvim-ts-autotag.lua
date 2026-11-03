@@ -1,15 +1,13 @@
-local spec = { "windwp/nvim-ts-autotag" }
-
-spec.ft = { "html", "xml", "javascriptreact", "typescriptreact" }
-
-spec.opts = {
+return {
+    "windwp/nvim-ts-autotag",
+    ft = { "html", "xml", "javascriptreact", "typescriptreact" },
     opts = {
-        -- Defaults
-        enable_close = true, -- Auto close tags
-        enable_rename = true, -- Auto rename pairs of tags
-        enable_close_on_slash = false, -- Auto close on trailing </
+        opts = {
+            -- Defaults
+            enable_close = true, -- Auto close tags
+            enable_rename = true, -- Auto rename pairs of tags
+            enable_close_on_slash = false, -- Auto close on trailing </
+        },
+        per_filetype = {},
     },
-    per_filetype = {},
 }
-
-return spec
